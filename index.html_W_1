@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nur Syazwani  - Student Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Rule 1: Internal CSS */
+        :root {
+            /* Updated Rule 4: Color Palette with Deep Ocean Blue Accent */
+            --color-background: #F8F9FA; /* Soft Grey/Off-White */
+            --color-card-bg: #FFFFFF;    /* White */
+            --color-text-primary: #343A40; /* Dark Grey */
+            --color-text-secondary: #6C757D; /* Medium Grey */
+            --color-accent: #004D99;     /* Deep Ocean Blue (UMT Theme) */
+            --border-radius: 12px;
+            --spacing: 16px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            margin: 0;
+            padding: var(--spacing);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Max desktop width */
+        }
+
+        /* Rule 2: Grid Layout (Desktop/Default) */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Base 4-column layout */
+            grid-auto-rows: minmax(150px, auto); /* Consistent minimum height for rows */
+            gap: var(--spacing);
+        }
+
+        .card {
+            background-color: var(--color-card-bg);
+            border-radius: var(--border-radius);
+            padding: var(--spacing);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Soft shadow */
+            /* Transition for Hover Effect */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Subtle Zoom/Scale Hover Effect */
+        .card:hover {
+            transform: scale(1.01); /* Scale up slightly */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* CARD STYLING */
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+        }
+
+        .card-content {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+
+        .card-accent-text {
+            color: var(--color-accent);
+            font-weight: 600;
+        }
+
+        /* Specific Card Sizing and Positioning (Desktop) */
+        .card-profile {
+            grid-column: span 2;
+            grid-row: span 2;
+            /* === NEW BACKGROUND IMAGE CODE === */
+            background-image: url('bg.jpg.jpg'); /* Set the background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Pseudo-element for a dark overlay to improve text contrast on the image */
+        .card-profile::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* 30% black overlay */
+            border-radius: var(--border-radius);
+            z-index: 2;
+        }
+
+        /* Adjust content z-index to be on top of the overlay */
+        .card-profile > div,
+        .card-profile .social-links {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Set text colors to light for readability over a dark image */
+        .card-profile h1,
+        .card-profile p,
+        .card-profile .social-links a {
+            color: var(--color-background) !important; /* Use soft white for visibility */
+        }
+        
+        /* Keep the accent color for social links hover for contrast */
+        .card-profile .social-links a:hover {
+            color: var(--color-accent) !important;
+        }
+
+        /* Regular card layout classes */
+        .card-location { grid-column: span 1; grid-row: span 1; }
+        .card-tech-stack { grid-column: span 1; grid-row: span 1; }
+        .card-case-study { grid-column: span 1; grid-row: span 1; }
+        .card-hobby { grid-column: span 1; grid-row: span 1; }
+        .card-reflection { grid-column: span 1; grid-row: span 1; }
+        .card-playlist { grid-column: span 4; min-height: 80px; justify-content: center; align-items: center; }
+
+        /* Profile specific styling */
+        .social-links a {
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        /* Media Query for Responsiveness (Stack vertically on mobile) */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr; /* Single column */
+                grid-auto-rows: auto; /* Auto height */
+            }
+
+            /* All cards stack and take full width */
+            .card {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="bento-grid">
+
+            <div class="card card-profile">
+                <div>
+                    <h1 class="card-title" style="font-size: 2.2rem;">Nur Syazwani</h1>
+                    <p class="card-content" style="font-size: 1.1rem;">
+                        <span class="card-accent-text">Food Technology</span> Student
+                    </p>
+                    <p class="card-content">
+                        Year 1 (2025) &mdash; **'Innovating food safety.'**
+                    </p>
+                </div>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="#" target="_blank" aria-label="GitHub">GitHub</a>
+                
+                </div>
+            </div>
+
+            <div class="card card-location">
+                <h3 class="card-title">📍 Current Location</h3>
+                <p class="card-content">
+                    <span class="card-accent-text">UMT, Kuala Nerus</span>
+                </p>
+                <p class="card-content" style="font-size: 0.85rem;">
+                    Local Time: <span id="current-time">11:37 AM</span>
+                    <script>
+                        // Simple script to update time
+                        document.getElementById('current-time').textContent = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+                    </script>
+                </p>
+            </div>
+
+            <div class="card card-tech-stack">
+                <h3 class="card-title">📚 Core Subjects</h3>
+                <p class="card-content"><span class="card-accent-text">Biochemistry</span></p>
+                <p class="card-content"><span class="card-accent-text">Physics Chemistry</span></p>
+                <p class="card-content">Organic Chemistry</p>
+                <p class="card-content">Mathematics Engineering, Computer System Analysis</p>
+            </div>
+
+            <div class="card card-case-study">
+                <h3 class="card-title">🧪 Recent Research</h3>
+                <p class="card-content">
+                    <span class="card-accent-text">Starch Gelatinization in Local Kuih</span>
+                </p>
+                <p class="card-content" style="font-size: 0.85rem; margin-top: 10px;">
+                    Focus: Analyzing texture profiles of Kuih Lapis.
+                </p>
+            </div>
+
+            <div class="card card-hobby">
+                <h3 class="card-title">☀️ Campus Activity</h3>
+                <p class="card-content">
+                    <span class="card-accent-text">Evening walks at Pantai UMT</span>
+                </p>
+                <p class="card-content" style="font-size: 0.85rem;">
+                    Enjoying the coastal environment.
+                </p>
+            </div>
+
+            <div class="card card-reflection">
+                <h3 class="card-title" style="color: var(--color-accent);">💡 Why Food Tech Matters in Malaysia</h3>
+                <p class="card-content">
+                    Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.
+                </p>
+            </div>
+
+            <div class="card card-playlist">
+                <h3 class="card-title" style="margin: 0; display: inline-block;">🎶 Study Playlist<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0iLyNDLTsBkqB8SLAzNGxF?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/2hjaiDsLLBlY68XrgjZk7F?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                <p class="card-content" style="margin-left: 10px; display: inline-block;">
+                    Lo-fi Beats for Focus.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
